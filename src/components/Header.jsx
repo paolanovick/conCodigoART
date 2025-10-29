@@ -1,31 +1,31 @@
-import logo from "../assets/ccaLogosf1.png"; // Ajusta la ruta si es necesario
+import React from "react";
+import logoBN from "../assets/logoBN.png"; // Ajusta la ruta si es necesario
 
 export default function Header() {
   return (
-    <header className="bg-white shadow p-6 flex justify-between items-center">
+    <header className="bg-black shadow p-6 flex justify-between items-center">
       {/* Logo */}
       <div className="flex items-center space-x-2">
-        <img src={logo} alt="ConCodigoArt" className="w-20 h-auto" />
-        
+        <img src={logoBN} alt="ConCodigoArt" className="w-32  h-auto" />
       </div>
 
       {/* Navegación */}
       <nav className="space-x-6">
         <a
           href="#nosotros"
-          className="hover:text-indigo-600 font-medium transition-colors"
+          className="text-white hover:text-indigo-400 font-medium transition-colors"
         >
           Nosotros
         </a>
         <a
           href="#productos"
-          className="hover:text-indigo-600 font-medium transition-colors"
+          className="text-white hover:text-indigo-400 font-medium transition-colors"
         >
           Productos
         </a>
         <a
           href="#contacto"
-          className="hover:text-indigo-600 font-medium transition-colors"
+          className="text-white hover:text-indigo-400 font-medium transition-colors"
         >
           Contacto
         </a>
