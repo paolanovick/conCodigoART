@@ -1,17 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-// Importar frames
 import laptopFrame from "../assets/mockup/laptop-frame.png";
-
 import phoneFrame2 from "../assets/mockup/phone-frame2.png";
-// Importar imágenes de proyectos
 import proyecto1 from "../assets/mockup/proyecto1.png";
 import proyecto2 from "../assets/mockup/proyecto2.png";
 import proyecto3 from "../assets/mockup/proyecto3.png";
 import proyecto5 from "../assets/mockup/proyecto5.png";
 import proyecto6 from "../assets/mockup/proyecto6.png";
 import proyecto7 from "../assets/mockup/proyecto7.png";
+
 export default function MockupPortfolio() {
   const proyectos = [
     {
@@ -25,40 +22,34 @@ export default function MockupPortfolio() {
     {
       titulo: "Chatbot Integrado",
       descripcion:
-        "Asistente virtual desarrollado con IA para mejorar la atención al cliente.",
+        "Asistente virtual con IA para mejorar la atención al cliente.",
       imagen: proyecto2,
       fondo: "from-indigo-700 to-indigo-900",
     },
     {
       titulo: "Tienda Online",
-      descripcion:
-        "E-commerce con pasarela de pagos, carrito y gestión de productos.",
+      descripcion: "E-commerce con carrito y pasarela de pagos.",
       imagen: proyecto3,
-
       fondo: "from-emerald-700 to-emerald-900",
     },
     {
       titulo: "Landing Page Creativa",
-      descripcion:
-        "Página promocional con alto impacto visual y foco en conversión.",
+      descripcion: "Página con alto impacto visual y foco en conversión.",
       imagen: proyecto6,
       frame: phoneFrame2,
       fondo: "from-purple-700 to-purple-900",
     },
     {
       titulo: "Panel Administrativo",
-      descripcion:
-        "Dashboard interactivo con control de datos, métricas y usuarios.",
+      descripcion: "Dashboard interactivo con control de datos y métricas.",
       imagen: proyecto5,
-
       fondo: "from-sky-700 to-sky-900",
     },
     {
       titulo: "Automatizaciones",
       descripcion:
-        "Automatizamos procesos como Envío de emails, Newsletter, respuestas de ChatBot.",
+        "Automatizamos procesos como envíos de emails, newsletter y respuestas con ChatBot programados.",
       imagen: proyecto7,
-
       fondo: "from-emerald-700 to-emerald-900",
     },
   ];
@@ -79,21 +70,21 @@ export default function MockupPortfolio() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            {/* Imagen principal */}
             <img
               src={p.imagen}
               alt={p.titulo}
-              className="w-full max-w-3xl rounded-xl shadow-md"
+              className="w-full max-w-3xl rounded-xl shadow-md object-cover"
             />
 
-            {/* Mockup decorativo (laptop o phone abajo a la izquierda) */}
-            <img
-              src={p.frame}
-              alt=""
-              className="absolute bottom-[14px] left-[19px] w-[290px] opacity-90"
-            />
+            {/* Frame decorativo */}
+            {p.frame && (
+              <img
+                src={p.frame}
+                alt=""
+                className="absolute bottom-[8px] left-[8px] sm:bottom-[14px] sm:left-[20px] w-[150px] sm:w-[220px] md:w-[290px] opacity-70"
+              />
+            )}
 
-            {/* Texto */}
             <div className="mt-8 text-center space-y-2">
               <h3 className="text-2xl font-bold">{p.titulo}</h3>
               <p className="text-gray-200 text-sm">{p.descripcion}</p>
