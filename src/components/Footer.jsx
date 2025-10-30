@@ -84,10 +84,10 @@ export default function Footer() {
             <div className="footer-column flex flex-col items-center text-center">
               <h3 className="font-bold text-lg mb-3">Contacto & Legal</h3>
               <Link
-                to="/contacto"
+                to="/Servicios-web"
                 className="hover:underline mb-1 text-gray-300 hover:text-white transition"
               >
-                Contacto Comercial
+                Servicios Web
               </Link>
               <Link
                 to="/politica-privacidad"
@@ -96,10 +96,16 @@ export default function Footer() {
                 Política de Privacidad
               </Link>
               <Link
-                to="/legales"
+                to="/aviso-legal"
                 className="hover:underline mb-1 text-gray-300 hover:text-white transition"
               >
                 Legales
+              </Link>
+              <Link
+                to="/politica-cookies"
+                className="hover:underline mb-1 text-gray-300 hover:text-white transition"
+              >
+                Política de Cookies
               </Link>
               <Link
                 to="/terminos-condiciones"
@@ -161,7 +167,7 @@ export default function Footer() {
           <button
             aria-label="Instagram"
             onClick={() =>
-              window.open("https://www.instagram.com/concodigoart/", "_blank")
+              window.open("https://www.instagram.com/kuke.bags/", "_blank")
             }
             className="hover:text-gray-400 transition"
           >
@@ -177,7 +183,7 @@ export default function Footer() {
 
         {/* Pie de página */}
         <div className="footer-bottom mt-8 text-center text-sm text-gray-400">
-          © {new Date().getFullYear()} Con Código ART. Todos los derechos
+          © {new Date().getFullYear()} Con CódigoART. Todos los derechos
           reservados.
         </div>
         <div className="footer-bottom mt-2 text-center text-sm text-gray-400">
