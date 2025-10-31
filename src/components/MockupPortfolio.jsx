@@ -85,20 +85,20 @@ export default function MockupPortfolio() {
               <motion.img
                 src={p.frame}
                 alt=""
-                initial={{ x: -200, opacity: 0 }}
+                initial={{ x: -100, opacity: 0 }} // menos desplazamiento para mobile
                 whileInView={{ x: 0, opacity: 0.7 }}
                 transition={{ duration: 1, ease: "easeOut" }}
                 viewport={{ once: true }}
                 className={`
-                  absolute
-                  ${
-                    p.tipoFrame === "phoneFrame"
-                      ? "bottom-[160px] sm:bottom-[120px] left-[40px] sm:left-[80px] w-[110px] sm:w-[150px] md:w-[190px] z-20"
-                      : p.tipoFrame === "phone"
-                      ? "bottom-[100px] left-[38px] sm:bottom-[100px] sm:left-[74px] w-[100px] sm:w-[140px] md:w-[180px] z-10"
-                      : "bottom-[50px] left-[10px] sm:bottom-[100px] sm:left-[24px] w-[160px] sm:w-[190px] md:w-[260px] z-10"
-                  }
-                `}
+      absolute
+      ${
+        p.tipoFrame === "phoneFrame"
+          ? "bottom-[120px] sm:bottom-[160px] left-[20px] sm:left-[40px] w-[80px] sm:w-[150px] md:w-[190px] z-20"
+          : p.tipoFrame === "phone"
+          ? "bottom-[100px] sm:bottom-[100px] left-[15px] sm:left-[38px] w-[90px] sm:w-[140px] md:w-[180px] z-10"
+          : "bottom-[50px] sm:bottom-[50px] left-[5px] sm:left-[10px] w-[140px] sm:w-[190px] md:w-[260px] z-10"
+      }
+    `}
               />
             )}
 
