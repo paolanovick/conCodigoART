@@ -1,12 +1,12 @@
 import React from "react";
-import logoBN from "../assets/logoBCO.png"; // Ajusta la ruta si es necesario
+import logoBCOsf from "../assets/logoBCOsf.png"; // Ajusta la ruta si es necesario
 
 export default function Header() {
   return (
     <header className="bg-black shadow p-6 flex justify-between items-center">
       {/* Logo */}
       <div className="flex items-center space-x-2">
-        <img src={logoBN} alt="ConCodigoArt" className="w-32  h-auto" />
+        <img src={logoBCOsf} alt="ConCodigoArt" className="w-32  h-auto" />
       </div>
 
       {/* Navegación */}
