@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import laptopFrame from "../assets/mockup/laptop-frame.png";
 import phoneFrame2 from "../assets/mockup/phone-frame2.png";
+import phoneFrame from "../assets/mockup/phoneFrame.png";
 import proyecto1 from "../assets/mockup/proyecto1.png";
 import proyecto2 from "../assets/mockup/proyecto2.png";
 import proyecto3 from "../assets/mockup/proyecto3.png";
@@ -17,6 +18,7 @@ export default function MockupPortfolio() {
         "Diseño web moderno y responsive con integración de APIs y panel administrativo.",
       imagen: proyecto1,
       frame: laptopFrame,
+      tipoFrame: "laptop",
       fondo: "from-red-700 to-red-900",
     },
     {
@@ -24,6 +26,8 @@ export default function MockupPortfolio() {
       descripcion:
         "Asistente virtual con IA para mejorar la atención al cliente.",
       imagen: proyecto2,
+      frame: phoneFrame,
+      tipoFrame: "phone",
       fondo: "from-indigo-700 to-indigo-900",
     },
     {
@@ -37,6 +41,7 @@ export default function MockupPortfolio() {
       descripcion: "Página con alto impacto visual y foco en conversión.",
       imagen: proyecto6,
       frame: phoneFrame2,
+      tipoFrame: "phoneFrame",
       fondo: "from-purple-700 to-purple-900",
     },
     {
@@ -73,15 +78,27 @@ export default function MockupPortfolio() {
             <img
               src={p.imagen}
               alt={p.titulo}
-              className="w-full max-w-3xl rounded-xl shadow-md object-cover"
+              className="w-full max-w-3xl rounded-xl object-cover"
             />
 
-            {/* Frame decorativo */}
             {p.frame && (
-              <img
+              <motion.img
                 src={p.frame}
                 alt=""
-                className="absolute bottom-[8px] left-[8px] sm:bottom-[14px] sm:left-[20px] w-[150px] sm:w-[220px] md:w-[290px] opacity-70"
+                initial={{ x: -200, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 0.7 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                viewport={{ once: true }}
+                className={`
+                  absolute
+                  ${
+                    p.tipoFrame === "phoneFrame"
+                      ? "bottom-[160px] sm:bottom-[120px] left-[40px] sm:left-[80px] w-[110px] sm:w-[150px] md:w-[190px] z-20"
+                      : p.tipoFrame === "phone"
+                      ? "bottom-[100px] left-[38px] sm:bottom-[100px] sm:left-[74px] w-[100px] sm:w-[140px] md:w-[180px] z-10"
+                      : "bottom-[50px] left-[10px] sm:bottom-[100px] sm:left-[24px] w-[160px] sm:w-[190px] md:w-[260px] z-10"
+                  }
+                `}
               />
             )}
 
