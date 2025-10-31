@@ -1,5 +1,5 @@
 import React from "react";
-import aboutImg from "../assets/logoN.png"; // reemplaza con tu imagen
+import aboutImg from "../assets/logoBCO.png"; // reemplaza con tu imagen
 
 export default function About() {
   return (

@@ -6,6 +6,7 @@ import {
   FaInstagram,
   FaLinkedin,
 } from "react-icons/fa";
+import logoBN from "../assets/logoBN.png"; 
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -45,8 +46,8 @@ export default function Footer() {
         {/* Logo y columnas */}
         <div className="footer-header">
           <img
-            src="/assets/logoBN.png"
-            alt="Logo"
+            src={logoBN}
+            alt="ConCodigoArt"
             className="footer-logo w-24 h-auto mb-4"
           />
 

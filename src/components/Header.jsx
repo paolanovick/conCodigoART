@@ -1,5 +1,5 @@
 import React from "react";
-import logoBN from "../assets/logoBN.png"; // Ajusta la ruta si es necesario
+import logoBN from "../assets/logoBCO.png"; // Ajusta la ruta si es necesario
 
 export default function Header() {
   return (
