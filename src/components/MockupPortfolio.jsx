@@ -113,26 +113,17 @@ export default function MockupPortfolio() {
               <h3 className="text-2xl font-bold">{p.titulo}</h3>
               <p className="text-gray-200 text-sm">{p.descripcion}</p>
 
-              <div className="flex items-center justify-center gap-3 mt-4">
-                {/* Botón principal: abre el chatbot */}
-                <button
-                  onClick={() =>
-                    window.openChatbot && window.openChatbot(p.titulo)
-                  }
-                  className="bg-gray-700 hover:bg-gray-600 text-white text-sm px-5 py-2 rounded-full transition-colors duration-200"
-                >
-                  Consultar
-                </button>
-
-                {/* Botón de WhatsApp */}
-                <button
-                  onClick={() => handleOpenWhatsApp(p.titulo)}
-                  className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white p-2 rounded-full transition-transform duration-200 hover:scale-110"
-                  title="Consultar por WhatsApp"
-                >
-                  <FaWhatsapp className="text-lg" />
-                </button>
-              </div>
+              {/* Botón Consultar con ícono de WhatsApp */}
+              <button
+                onClick={() => {
+                  handleOpenWhatsApp(p.titulo);
+                  if (window.openChatbot) window.openChatbot(p.titulo);
+                }}
+                className="flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white text-sm px-5 py-2 rounded-full transition-colors duration-200"
+              >
+                Consultar
+                <FaWhatsapp className="text-green-400 text-lg" />
+              </button>
             </div>
           </motion.div>
         ))}
