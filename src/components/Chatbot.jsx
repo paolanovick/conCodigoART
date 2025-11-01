@@ -1,12 +1,10 @@
-// Chatbot.jsx
 import React, { useState, useEffect } from "react";
 
 export default function Chatbot({ prefill = "" }) {
   const [message, setMessage] = useState(prefill);
-  const [messages, setMessages] = useState([]); // historial de mensajes
+  const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Actualiza el mensaje cuando cambia prefill
   useEffect(() => {
     setMessage(prefill);
   }, [prefill]);
@@ -14,14 +12,12 @@ export default function Chatbot({ prefill = "" }) {
   const handleSend = async () => {
     if (!message) return;
 
-    // Agregar mensaje del usuario al historial
     const userMessage = { type: "user", text: message };
     setMessages((prev) => [...prev, userMessage]);
     setMessage("");
     setLoading(true);
 
     try {
-      // 🔹 Aquí llamamos a nuestro backend proxy
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -30,20 +26,22 @@ export default function Chatbot({ prefill = "" }) {
 
       const data = await res.json();
 
-      // 🔹 Ajuste clave: tomar cualquier campo de respuesta de N8N
-     const botMessage = {
-       type: "bot",
-       text:
-         data.reply || data.data || data.message || "No se recibió respuesta.",
-     };
-
+      const botMessage = {
+        type: "bot",
+        text:
+          data.reply ||
+          data.data ||
+          data.text ||
+          data.message ||
+          "No se recibió respuesta.",
+      };
 
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
       console.error("Error:", error);
       setMessages((prev) => [
         ...prev,
-        { type: "bot", text: "Error de conexión." },
+        { type: "bot", text: "Error al conectar con el servidor." },
       ]);
     } finally {
       setLoading(false);
