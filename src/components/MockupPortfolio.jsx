@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { FaWhatsapp } from "react-icons/fa";
+
 import laptopFrame from "../assets/mockup/laptop-frame.png";
 import phoneFrame2 from "../assets/mockup/phone-frame2.png";
 import phoneFrame from "../assets/mockup/phoneFrame.png";
@@ -59,6 +61,14 @@ export default function MockupPortfolio() {
     },
   ];
 
+  const handleOpenWhatsApp = (proyecto) => {
+    const mensaje = encodeURIComponent(
+      `Hola 👋, me interesa obtener más información sobre el proyecto: ${proyecto}.`
+    );
+    const url = `https://wa.me/5491151215750?text=${mensaje}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <section className="py-20 bg-gray-950">
       <h2 className="text-4xl font-bold text-center text-white mb-12">
@@ -85,34 +95,44 @@ export default function MockupPortfolio() {
               <motion.img
                 src={p.frame}
                 alt=""
-                initial={{ x: -100, opacity: 0 }} // menos desplazamiento para mobile
+                initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 0.7 }}
                 transition={{ duration: 1, ease: "easeOut" }}
                 viewport={{ once: true }}
-                className={`
-      absolute
-      ${
-        p.tipoFrame === "phoneFrame"
-          ? "bottom-[120px] sm:bottom-[160px] left-[20px] sm:left-[40px] w-[80px] sm:w-[150px] md:w-[190px] z-20"
-          : p.tipoFrame === "phone"
-          ? "bottom-[100px] sm:bottom-[100px] left-[15px] sm:left-[38px] w-[90px] sm:w-[140px] md:w-[180px] z-10"
-          : "bottom-[50px] sm:bottom-[50px] left-[5px] sm:left-[10px] w-[140px] sm:w-[190px] md:w-[260px] z-10"
-      }
-    `}
+                className={`absolute ${
+                  p.tipoFrame === "phoneFrame"
+                    ? "bottom-[120px] sm:bottom-[160px] left-[20px] sm:left-[40px] w-[80px] sm:w-[150px] md:w-[190px] z-20"
+                    : p.tipoFrame === "phone"
+                    ? "bottom-[100px] sm:bottom-[100px] left-[15px] sm:left-[38px] w-[90px] sm:w-[140px] md:w-[180px] z-10"
+                    : "bottom-[50px] sm:bottom-[50px] left-[5px] sm:left-[10px] w-[140px] sm:w-[190px] md:w-[260px] z-10"
+                }`}
               />
             )}
 
             <div className="mt-8 text-center space-y-2">
               <h3 className="text-2xl font-bold">{p.titulo}</h3>
               <p className="text-gray-200 text-sm">{p.descripcion}</p>
-              <button
-                onClick={() =>
-                  window.openChatbot && window.openChatbot(p.titulo)
-                }
-                className="mt-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white text-sm px-4 py-2 rounded-full"
-              >
-                Consultar
-              </button>
+
+              <div className="flex items-center justify-center gap-3 mt-4">
+                {/* Botón principal: abre el chatbot */}
+                <button
+                  onClick={() =>
+                    window.openChatbot && window.openChatbot(p.titulo)
+                  }
+                  className="bg-gray-700 hover:bg-gray-600 text-white text-sm px-5 py-2 rounded-full transition-colors duration-200"
+                >
+                  Consultar
+                </button>
+
+                {/* Botón de WhatsApp */}
+                <button
+                  onClick={() => handleOpenWhatsApp(p.titulo)}
+                  className="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white p-2 rounded-full transition-transform duration-200 hover:scale-110"
+                  title="Consultar por WhatsApp"
+                >
+                  <FaWhatsapp className="text-lg" />
+                </button>
+              </div>
             </div>
           </motion.div>
         ))}
