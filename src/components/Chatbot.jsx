@@ -31,11 +31,12 @@ export default function Chatbot({ prefill = "" }) {
       const data = await res.json();
 
       // 🔹 Ajuste clave: tomar cualquier campo de respuesta de N8N
-      const botMessage = {
-        type: "bot",
-        text:
-          data.reply || data.data || data.message || "No se recibió respuesta.",
-      };
+     const botMessage = {
+       type: "bot",
+       text:
+         data.reply || data.data || data.message || "No se recibió respuesta.",
+     };
+
 
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
