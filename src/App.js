@@ -7,6 +7,7 @@ import Seccion1 from "./components/Seccion1";
 import MarcasCaroussel from "./components/MarcasCaroussel";
 import MockupPortfolio from "./components/MockupPortfolio";
 import ChatbotWidget from "./components/ChatbotWidget";
+import TestimonialsCarousel from "./components/TestimonialsCarousel";
 function App() {
   return (
     <div className="font-sans">
@@ -15,9 +16,10 @@ function App() {
       <Seccion1 />
       <About />
       <MarcasCaroussel />
-        <MockupPortfolio />
-      <ChatbotWidget /> 
-    
+      <MockupPortfolio />
+      <ChatbotWidget />
+      <TestimonialsCarousel />
+
       <Contact />
       <Footer />
     </div>

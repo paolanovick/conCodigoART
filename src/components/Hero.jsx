@@ -8,7 +8,7 @@ export default function Hero() {
       {/* Logo y título */}
       <div className="flex flex-col items-center mb-10 z-30">
         <h1 className="mt-12 text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">
-          Bienvenido a ConCodigoArt
+          ConCodigoArt
         </h1>
 
         <p className="text-white mt-2 text-base sm:text-lg md:text-xl text-center max-w-xl">
