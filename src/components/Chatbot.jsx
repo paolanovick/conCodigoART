@@ -14,22 +14,29 @@ export default function Chatbot({ prefill = "" }) {
   const handleSend = async () => {
     if (!message) return;
 
+    // Agregar mensaje del usuario al historial
     const userMessage = { type: "user", text: message };
     setMessages((prev) => [...prev, userMessage]);
     setMessage("");
     setLoading(true);
 
     try {
-      const res = await fetch("https://n8n.triptest.com.ar/webhook/chat-cca", {
+      // 🔹 Aquí llamamos a nuestro backend proxy
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message }),
       });
+
       const data = await res.json();
+
+      // 🔹 Ajuste clave: tomar cualquier campo de respuesta de N8N
       const botMessage = {
         type: "bot",
-        text: data.reply || "No se recibió respuesta.",
+        text:
+          data.reply || data.data || data.message || "No se recibió respuesta.",
       };
+
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
       console.error("Error:", error);
