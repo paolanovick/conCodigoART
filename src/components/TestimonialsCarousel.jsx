@@ -19,7 +19,7 @@ export default function TestimonialsCarousel() {
       empresa: "TripNow",
       logo: marca2,
       comentario:
-        "Gracias al chatbot automatizado ahora atendemos consultas 24/7. ¡Muy recomendados!",
+        "Automatizamos las reservas por WhatsApp y ahorramos muchísimo tiempo. Excelente atención.",
     },
     {
       empresa: "La Eugenia y Flia",
@@ -37,7 +37,7 @@ export default function TestimonialsCarousel() {
       empresa: "KUKE Bags",
       logo: marca5,
       comentario:
-        "Automatizamos las reservas por WhatsApp y ahorramos muchísimo tiempo. Excelente atención.",
+        "Gracias al chatbot automatizado ahora atendemos consultas 24/7. ¡Muy recomendados!",
     },
   ];
 
