@@ -105,6 +105,14 @@ export default function MockupPortfolio() {
             <div className="mt-8 text-center space-y-2">
               <h3 className="text-2xl font-bold">{p.titulo}</h3>
               <p className="text-gray-200 text-sm">{p.descripcion}</p>
+              <button
+                onClick={() =>
+                  window.openChatbot && window.openChatbot(p.titulo)
+                }
+                className="mt-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white text-sm px-4 py-2 rounded-full"
+              >
+                Consultar
+              </button>
             </div>
           </motion.div>
         ))}

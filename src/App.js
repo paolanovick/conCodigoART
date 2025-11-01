@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Seccion1 from "./components/Seccion1";
 import MarcasCaroussel from "./components/MarcasCaroussel";
 import MockupPortfolio from "./components/MockupPortfolio";
+import ChatbotWidget from "./components/ChatbotWidget";
 function App() {
   return (
     <div className="font-sans">
@@ -14,7 +15,9 @@ function App() {
       <Seccion1 />
       <About />
       <MarcasCaroussel />
-      <MockupPortfolio />
+        <MockupPortfolio />
+      <ChatbotWidget /> 
+    
       <Contact />
       <Footer />
     </div>
