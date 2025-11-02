@@ -1,4 +1,4 @@
-import tarjeta11 from "../assets/tarjeta11.png";
+import tarjeta111 from "../assets/tarjeta111.png";
 import tarjeta22 from "../assets/tarjeta22.png";
 import tarjeta41 from "../assets/tarjeta41.png";
 
@@ -25,7 +25,7 @@ export default function Hero() {
             className="absolute left-1/2 transform -translate-x-[140%] -translate-y-12 rotate-[10deg] w-[26rem] h-auto z-20"
           />
           <img
-            src={tarjeta11}
+            src={tarjeta111}
             alt="Tarjeta 1"
             className="relative z-30 transform -translate-y-16 w-[28rem] h-auto"
           />
@@ -43,7 +43,7 @@ export default function Hero() {
             alt="Tarjeta 4"
             className="w-52 h-auto rotate-12"
           />
-          <img src={tarjeta11} alt="Tarjeta 1" className="w-60 h-auto z-30" />
+          <img src={tarjeta111} alt="Tarjeta 1" className="w-60 h-auto z-30" />
           <img
             src={tarjeta22}
             alt="Tarjeta 2"
@@ -60,7 +60,7 @@ export default function Hero() {
             className="w-11/12 max-w-xs h-auto transform rotate-6"
           />
           <img
-            src={tarjeta11}
+            src={tarjeta111}
             alt="Tarjeta 1"
             className="w-11/12 max-w-xs h-auto"
           />
