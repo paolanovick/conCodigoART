@@ -8,32 +8,27 @@ export default function Hero() {
     {
       image: tarjeta41,
       link: '#proyecto1',
-      title: 'Proyecto Artístico',
-      description: 'Explorá mi arte digital'
+     
     },
     {
       image: tarjeta111,
       link: '#proyecto2',
-      title: 'Proyecto Tecnológico',
-      description: 'Soluciones creativas'
+      
     },
     {
       image: tarjeta22,
       link: '#proyecto3',
-      title: 'Proyecto Creativo',
-      description: 'Arte y código unidos'
+      
     },
     {
       image: tarjeta41,
       link: '#proyecto4',
-      title: 'Más Arte',
-      description: 'Creaciones digitales'
+      
     },
     {
       image: tarjeta111,
       link: '#proyecto5',
-      title: 'Más Tech',
-      description: 'Innovación visual'
+      
     }
   ];
 

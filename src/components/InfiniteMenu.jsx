@@ -72,10 +72,10 @@ void main() {
     // 🔥 Coordenadas centradas para la tarjeta cuadrada
     vec2 centered = vUvs - 0.5;
     
-    // 🔥 Radio de las esquinas redondeadas (ajustá este valor)
-    float cornerRadius = 0.08; // 0.0 = cuadrado perfecto, 0.1 = más redondeado
+    // 🔥 Radio de las esquinas redondeadas
+    float cornerRadius = 0.08;
     
-    // 🔥 Tamaño del cuadrado (0.9 = un poco más chico que el círculo)
+    // 🔥 Tamaño del cuadrado
     float squareSize = 0.85;
     
     // 🔥 Calcular distancia a las esquinas para el redondeo
@@ -88,8 +88,8 @@ void main() {
         discard;
     }
     
-    // 🔥 Mapeo de textura cuadrado (sin distorsión)
-    vec2 st = vUvs;
+    // 🔥 Corregir orientación: invertir Y
+    vec2 st = vec2(vUvs.x, 1.0 - vUvs.y); // ← ESTA ES LA LÍNEA CLAVE
     st = st * cellSize + cellOffset;
     
     outColor = texture(uTex, st);
