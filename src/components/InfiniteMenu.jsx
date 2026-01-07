@@ -855,7 +855,7 @@ if (onInit) onInit(this);
  #onControlUpdate(deltaTime) {
   const timeScale = deltaTime / this.TARGET_FRAME_DURATION + 0.0001;
   let damping = 5 / timeScale;
-  let cameraTargetZ = 3; // 🔥 FIJO
+  let cameraTargetZ = 1; // 🔥 FIJO
 
   if (this.control.isPointerDown) {
     cameraTargetZ += this.control.rotationVelocity * 6;
