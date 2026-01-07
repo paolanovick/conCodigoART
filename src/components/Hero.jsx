@@ -40,15 +40,15 @@ export default function Hero() {
   return (
     <section className="relative bg-black min-h-screen flex flex-col items-center justify-center overflow-hidden px-4">
       {/* Logo y título */}
-      <div className="flex flex-col items-center mb-10 z-30">
-        <h1 className="mt-12 text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">
-          ConCodigoArt
-        </h1>
+      <div className="flex flex-col items-center mb-4 z-30"> {/* 🔥 Era mb-10, ahora mb-4 */}
+  <h1 className="mt-12 text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">
+    ConCodigoArt
+  </h1>
 
-        <p className="text-white mt-2 text-base sm:text-lg md:text-xl text-center max-w-xl">
-          Tu espacio creativo para proyectos artísticos y tecnológicos
-        </p>
-      </div>
+  <p className="text-white mt-2 text-base sm:text-lg md:text-xl text-center max-w-xl">
+    Tu espacio creativo para proyectos artísticos y tecnológicos
+  </p>
+</div>
 
       <div className="relative flex justify-center items-center w-full flex-1 pb-3">
         {/* 🖥️ Desktop con InfiniteMenu */}
