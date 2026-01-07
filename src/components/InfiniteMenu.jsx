@@ -69,18 +69,27 @@ void main() {
     vec2 cellSize = vec2(1.0) / vec2(float(cellsPerRow));
     vec2 cellOffset = vec2(float(cellX), float(cellY)) * cellSize;
 
-    ivec2 texSize = textureSize(uTex, 0);
-    float imageAspect = float(texSize.x) / float(texSize.y);
-    float containerAspect = 1.0;
+    // 🔥 Coordenadas centradas para la tarjeta cuadrada
+    vec2 centered = vUvs - 0.5;
     
-    float scale = max(imageAspect / containerAspect, 
-                     containerAspect / imageAspect);
+    // 🔥 Radio de las esquinas redondeadas (ajustá este valor)
+    float cornerRadius = 0.08; // 0.0 = cuadrado perfecto, 0.1 = más redondeado
     
-    vec2 st = vec2(vUvs.x, 1.0 - vUvs.y);
-    st = (st - 0.5) * scale + 0.5;
+    // 🔥 Tamaño del cuadrado (0.9 = un poco más chico que el círculo)
+    float squareSize = 0.85;
     
-    st = clamp(st, 0.0, 1.0);
+    // 🔥 Calcular distancia a las esquinas para el redondeo
+    vec2 absPos = abs(centered);
+    vec2 cornerDist = absPos - vec2(squareSize - cornerRadius);
+    float dist = length(max(cornerDist, 0.0));
     
+    // 🔥 Descarta píxeles fuera del cuadrado redondeado
+    if (absPos.x > squareSize || absPos.y > squareSize || dist > cornerRadius) {
+        discard;
+    }
+    
+    // 🔥 Mapeo de textura cuadrado (sin distorsión)
+    vec2 st = vUvs;
     st = st * cellSize + cellOffset;
     
     outColor = texture(uTex, st);
