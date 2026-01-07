@@ -578,7 +578,7 @@ class ArcballControl {
 
 class InfiniteGridMenu {
   TARGET_FRAME_DURATION = 1000 / 60;
-  SPHERE_RADIUS = 2;
+  SPHERE_RADIUS = 1.3;
 
   #time = 0;
   #deltaTime = 0;
@@ -766,12 +766,13 @@ if (onInit) onInit(this);
   }
 
   #animate(deltaTime) {
-    const gl = this.gl;
-    this.control.update(deltaTime, this.TARGET_FRAME_DURATION);
+  const gl = this.gl;
+  this.control.update(deltaTime, this.TARGET_FRAME_DURATION);
 
-    let positions = this.instancePositions.map(p => vec3.transformQuat(vec3.create(), p, this.control.orientation));
-    const scale = 0.25;
-    const SCALE_INTENSITY = 0.6;
+  let positions = this.instancePositions.map(p => vec3.transformQuat(vec3.create(), p, this.control.orientation));
+  const scale = 0.25; // 🔥 Era 0.25, ahora 0.3 (tarjetas un poco más grandes)
+  const SCALE_INTENSITY = 0.6;
+  // ...
     positions.forEach((p, ndx) => {
       const s = (Math.abs(p[2]) / this.SPHERE_RADIUS) * SCALE_INTENSITY + (1 - SCALE_INTENSITY);
       const finalScale = s * scale;
@@ -962,31 +963,25 @@ export default function InfiniteMenu({ items = [], scale = 1.0 }) {
     };
   }, [items, scale]);
 
-  const handleButtonClick = () => {
-    if (!activeItem?.link) return;
-    if (activeItem.link.startsWith('http')) {
-      window.open(activeItem.link, '_blank');
-    } else {
-      console.log('Internal route:', activeItem.link);
-    }
-  };
+//   const handleButtonClick = () => {
+//     if (!activeItem?.link) return;
+//     if (activeItem.link.startsWith('http')) {
+//       window.open(activeItem.link, '_blank');
+//     } else {
+//       console.log('Internal route:', activeItem.link);
+//     }
+//   };
 
-  return (
-    <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: '600px' }}>
+ return (
+  <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: '600px' }}>
+    <canvas id="infinite-grid-menu-canvas" ref={canvasRef} />
 
-      <canvas id="infinite-grid-menu-canvas" ref={canvasRef} />
-
-      {activeItem && (
-        <>
-          <h2 className={`face-title ${isMoving ? 'inactive' : 'active'}`}>{activeItem.title}</h2>
-
-          <p className={`face-description ${isMoving ? 'inactive' : 'active'}`}> {activeItem.description}</p>
-
-          <div onClick={handleButtonClick} className={`action-button ${isMoving ? 'inactive' : 'active'}`}>
-            <p className="action-button-icon">&#x2197;</p>
-          </div>
-        </>
-      )}
-    </div>
-  );
+    {activeItem && (
+      <>
+        <h2 className={`face-title ${isMoving ? 'inactive' : 'active'}`}>{activeItem.title}</h2>
+        <p className={`face-description ${isMoving ? 'inactive' : 'active'}`}>{activeItem.description}</p>
+      </>
+    )}
+  </div>
+);
 }

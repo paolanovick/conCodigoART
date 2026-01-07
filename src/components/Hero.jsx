@@ -36,7 +36,7 @@ export default function Hero() {
     <section className="relative bg-black min-h-screen flex flex-col items-center justify-center overflow-hidden px-4">
       {/* Logo y título */}
       <div className="flex flex-col items-center mb-4 z-30"> {/* 🔥 Era mb-10, ahora mb-4 */}
-  <h1 className="mt-8 text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">
+  <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">
     ConCodigoArt
   </h1>
 
@@ -47,8 +47,8 @@ export default function Hero() {
 
       <div className="relative flex justify-center items-center w-full flex-1 pb-3">
         {/* 🖥️ Desktop con InfiniteMenu */}
-        <div className="hidden md:block w-full h-[600px] relative">
-          <InfiniteMenu items={menuItems} scale={0.2} />
+        <div className="hidden md:block w-[120000px] h-[650px] relative">
+          <InfiniteMenu items={menuItems} scale={0.03} />
         </div>
 
         {/* 💻 Tablet */}
