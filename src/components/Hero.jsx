@@ -53,7 +53,7 @@ export default function Hero() {
       <div className="relative flex justify-center items-center w-full flex-1 pb-3">
         {/* 🖥️ Desktop con InfiniteMenu */}
         <div className="hidden md:block w-full h-[600px] relative">
-          <InfiniteMenu items={menuItems} scale={0.8} />
+          <InfiniteMenu items={menuItems} scale={0.4} />
         </div>
 
         {/* 💻 Tablet */}

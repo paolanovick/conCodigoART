@@ -602,7 +602,7 @@ class InfiniteGridMenu {
     this.onActiveItemChange = onActiveItemChange || (() => {});
     this.onMovementChange = onMovementChange || (() => {});
     this.scaleFactor = scale;
-    this.camera.position[2] = 3 * scale;
+    this.camera.position[2] = 2 * scale;
     this.#init(onInit);
   }
 
@@ -854,7 +854,7 @@ class InfiniteGridMenu {
   #onControlUpdate(deltaTime) {
     const timeScale = deltaTime / this.TARGET_FRAME_DURATION + 0.0001;
     let damping = 5 / timeScale;
-    let cameraTargetZ = 3 * this.scaleFactor;
+    let cameraTargetZ = 2 * this.scaleFactor;
 
     const isMoving = this.control.isPointerDown || Math.abs(this.smoothRotationVelocity) > 0.01;
 
