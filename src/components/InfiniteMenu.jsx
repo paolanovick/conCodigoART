@@ -602,7 +602,7 @@ constructor(canvas, items, onActiveItemChange, onMovementChange, onInit = null, 
   this.onActiveItemChange = onActiveItemChange || (() => {});
   this.onMovementChange = onMovementChange || (() => {});
   this.scaleFactor = scale;
-  this.camera.position[2] = 3; // 🔥 FIJO en 3
+  this.camera.position[2] = 2.5; // 🔥 FIJO en 3
   this.#init(onInit);
 }
 
@@ -855,10 +855,10 @@ if (onInit) onInit(this);
  #onControlUpdate(deltaTime) {
   const timeScale = deltaTime / this.TARGET_FRAME_DURATION + 0.0001;
   let damping = 5 / timeScale;
-  let cameraTargetZ = 1; // 🔥 FIJO
+  let cameraTargetZ = 2; // 🔥 FIJO
 
   if (this.control.isPointerDown) {
-    cameraTargetZ += this.control.rotationVelocity * 6;
+    cameraTargetZ += this.control.rotationVelocity * 3;
     damping = 7 / timeScale;
   }
 
