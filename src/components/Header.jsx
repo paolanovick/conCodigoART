@@ -3,7 +3,7 @@ import logoBCOsf from "../assets/logoBCOsf.png"; // Ajusta la ruta si es necesar
 
 export default function Header() {
   return (
-    <header className="bg-black shadow p-6 flex justify-between items-center">
+    <header className="bg-black shadow p-4 flex justify-between items-center">
       {/* Logo */}
       <div className="flex items-center space-x-2">
         <img src={logoBCOsf} alt="ConCodigoArt" className="w-32  h-auto" />
