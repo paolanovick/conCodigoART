@@ -597,12 +597,16 @@ class InfiniteGridMenu {
   movementActive = false;
 
   constructor(canvas, items, onActiveItemChange, onMovementChange, onInit = null, scale = 1.0) {
-    this.canvas = canvas;
+      this.canvas = canvas;
+      this.canvas.style.width = '100%';
+      this.canvas.style.height = '100vh';
+
     this.items = items || [];
     this.onActiveItemChange = onActiveItemChange || (() => {});
     this.onMovementChange = onMovementChange || (() => {});
     this.scaleFactor = scale;
-    this.camera.position[2] = 2 * scale;
+      this.camera.position[2] = 2.5 * scale;
+      
     this.#init(onInit);
   }
 
@@ -627,14 +631,16 @@ class InfiniteGridMenu {
     this.#animate(this.#deltaTime);
     this.#render();
 
-    requestAnimationFrame(t => this.run(t));
+      requestAnimationFrame(t => this.run(t));
+      
   }
 
   #init(onInit) {
     this.gl = this.canvas.getContext('webgl2', { antialias: true, alpha: false });
     const gl = this.gl;
     if (!gl) {
-      throw new Error('No WebGL 2 context!');
+        throw new Error('No WebGL 2 context!');
+        
     }
 
     this.viewportSize = vec2.fromValues(this.canvas.clientWidth, this.canvas.clientHeight);
@@ -854,7 +860,7 @@ class InfiniteGridMenu {
   #onControlUpdate(deltaTime) {
     const timeScale = deltaTime / this.TARGET_FRAME_DURATION + 0.0001;
     let damping = 5 / timeScale;
-    let cameraTargetZ = 2 * this.scaleFactor;
+    let cameraTargetZ = 2.5 * this.scaleFactor;
 
     const isMoving = this.control.isPointerDown || Math.abs(this.smoothRotationVelocity) > 0.01;
 
@@ -868,7 +874,8 @@ class InfiniteGridMenu {
       const itemIndex = nearestVertexIndex % Math.max(1, this.items.length);
       this.onActiveItemChange(itemIndex);
       const snapDirection = vec3.normalize(vec3.create(), this.#getVertexWorldPosition(nearestVertexIndex));
-      this.control.snapTargetDirection = snapDirection;
+        this.control.snapTargetDirection = snapDirection;
+        
     } else {
       cameraTargetZ += this.control.rotationVelocity * 80 + 2.5;
       damping = 7 / timeScale;
