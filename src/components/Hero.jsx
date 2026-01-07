@@ -1,8 +1,42 @@
+import InfiniteMenu from './InfiniteMenu';
 import tarjeta111 from "../assets/tarjeta111.png";
 import tarjeta22 from "../assets/tarjeta22.png";
 import tarjeta41 from "../assets/tarjeta41.png";
 
 export default function Hero() {
+  const menuItems = [
+    {
+      image: tarjeta41,
+      link: '#proyecto1',
+      title: 'Proyecto Artístico',
+      description: 'Explorá mi arte digital'
+    },
+    {
+      image: tarjeta111,
+      link: '#proyecto2',
+      title: 'Proyecto Tecnológico',
+      description: 'Soluciones creativas'
+    },
+    {
+      image: tarjeta22,
+      link: '#proyecto3',
+      title: 'Proyecto Creativo',
+      description: 'Arte y código unidos'
+    },
+    {
+      image: tarjeta41,
+      link: '#proyecto4',
+      title: 'Más Arte',
+      description: 'Creaciones digitales'
+    },
+    {
+      image: tarjeta111,
+      link: '#proyecto5',
+      title: 'Más Tech',
+      description: 'Innovación visual'
+    }
+  ];
+
   return (
     <section className="relative bg-black min-h-screen flex flex-col items-center justify-center overflow-hidden px-4">
       {/* Logo y título */}
@@ -17,23 +51,9 @@ export default function Hero() {
       </div>
 
       <div className="relative flex justify-center items-center w-full flex-1 pb-3">
-        {/* 🖥️ Desktop */}
-        <div className="hidden md:flex justify-center items-center relative w-full">
-          <img
-            src={tarjeta41}
-            alt="Tarjeta 4"
-            className="absolute left-1/2 transform -translate-x-[140%] -translate-y-12 rotate-[10deg] w-[26rem] h-auto z-20"
-          />
-          <img
-            src={tarjeta111}
-            alt="Tarjeta 1"
-            className="relative z-30 transform -translate-y-16 w-[28rem] h-auto"
-          />
-          <img
-            src={tarjeta22}
-            alt="Tarjeta 2"
-            className="absolute left-1/2 transform translate-x-[35%] -translate-y-12 -rotate-[10deg] w-[26rem] h-auto z-20"
-          />
+        {/* 🖥️ Desktop con InfiniteMenu */}
+        <div className="hidden md:block w-full h-[600px] relative">
+          <InfiniteMenu items={menuItems} scale={0.8} />
         </div>
 
         {/* 💻 Tablet */}
@@ -52,7 +72,6 @@ export default function Hero() {
         </div>
 
         {/* 📱 Mobile */}
-        {/* 📱 Tarjetas Móvil - apiladas y centradas */}
         <div className="flex flex-col gap-4 sm:hidden items-center justify-center w-full px-4">
           <img
             src={tarjeta41}
