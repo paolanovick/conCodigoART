@@ -596,31 +596,24 @@ class InfiniteGridMenu {
   scaleFactor = 1.0;
   movementActive = false;
 
-  constructor(canvas, items, onActiveItemChange, onMovementChange, onInit = null, scale = 1.0) {
-      this.canvas = canvas;
-      this.canvas.style.width = '100%';
-      this.canvas.style.height = '100vh';
+constructor(canvas, items, onActiveItemChange, onMovementChange, onInit = null, scale = 1.0) {
+  this.canvas = canvas;
+  this.items = items || [];
+  this.onActiveItemChange = onActiveItemChange || (() => {});
+  this.onMovementChange = onMovementChange || (() => {});
+  this.scaleFactor = scale;
+  this.camera.position[2] = 3; // 🔥 FIJO en 3
+  this.#init(onInit);
+}
 
-    this.items = items || [];
-    this.onActiveItemChange = onActiveItemChange || (() => {});
-    this.onMovementChange = onMovementChange || (() => {});
-    this.scaleFactor = scale;
-      this.camera.position[2] = 2.5 * scale;
-      
-    this.#init(onInit);
+ resize() {
+  const gl = this.gl;
+  const needsResize = resizeCanvasToDisplaySize(gl.canvas);
+  if (needsResize) {
+    gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
   }
-
-  resize() {
-    this.viewportSize = vec2.set(this.viewportSize || vec2.create(), this.canvas.clientWidth, this.canvas.clientHeight);
-
-    const gl = this.gl;
-    const needsResize = resizeCanvasToDisplaySize(gl.canvas);
-    if (needsResize) {
-      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
-    }
-
-    this.#updateProjectionMatrix(gl);
-  }
+  this.#updateProjectionMatrix(gl);
+}
 
   run(time = 0) {
     this.#deltaTime = Math.min(32, time - this.#time);
@@ -631,16 +624,14 @@ class InfiniteGridMenu {
     this.#animate(this.#deltaTime);
     this.#render();
 
-      requestAnimationFrame(t => this.run(t));
-      
+    requestAnimationFrame(t => this.run(t));
   }
 
   #init(onInit) {
     this.gl = this.canvas.getContext('webgl2', { antialias: true, alpha: false });
     const gl = this.gl;
     if (!gl) {
-        throw new Error('No WebGL 2 context!');
-        
+      throw new Error('No WebGL 2 context!');
     }
 
     this.viewportSize = vec2.fromValues(this.canvas.clientWidth, this.canvas.clientHeight);
@@ -691,11 +682,15 @@ class InfiniteGridMenu {
 
     this.control = new ArcballControl(this.canvas, deltaTime => this.#onControlUpdate(deltaTime));
 
-    this.#updateCameraMatrix();
-    this.#updateProjectionMatrix(gl);
-    this.resize();
+   this.#updateCameraMatrix();
+this.#updateProjectionMatrix(gl);
+this.resize();
 
-    if (onInit) onInit(this);
+// 🔥 ESTO ES LO QUE FALTABA
+this.#animate(0);   // ← calcula las matrices iniciales
+this.#render();     // ← dibuja la bola visible
+
+if (onInit) onInit(this);
   }
 
   #initTexture() {
@@ -857,34 +852,34 @@ class InfiniteGridMenu {
     mat4.invert(this.camera.matrices.inversProjection, this.camera.matrices.projection);
   }
 
-  #onControlUpdate(deltaTime) {
-    const timeScale = deltaTime / this.TARGET_FRAME_DURATION + 0.0001;
-    let damping = 5 / timeScale;
-    let cameraTargetZ = 2.5 * this.scaleFactor;
+ #onControlUpdate(deltaTime) {
+  const timeScale = deltaTime / this.TARGET_FRAME_DURATION + 0.0001;
+  let damping = 5 / timeScale;
+  let cameraTargetZ = 3; // 🔥 FIJO
 
-    const isMoving = this.control.isPointerDown || Math.abs(this.smoothRotationVelocity) > 0.01;
-
-    if (isMoving !== this.movementActive) {
-      this.movementActive = isMoving;
-      this.onMovementChange(isMoving);
-    }
-
-    if (!this.control.isPointerDown) {
-      const nearestVertexIndex = this.#findNearestVertexIndex();
-      const itemIndex = nearestVertexIndex % Math.max(1, this.items.length);
-      this.onActiveItemChange(itemIndex);
-      const snapDirection = vec3.normalize(vec3.create(), this.#getVertexWorldPosition(nearestVertexIndex));
-        this.control.snapTargetDirection = snapDirection;
-        
-    } else {
-      cameraTargetZ += this.control.rotationVelocity * 80 + 2.5;
-      damping = 7 / timeScale;
-    }
-
-    this.camera.position[2] += (cameraTargetZ - this.camera.position[2]) / damping;
-    this.#updateCameraMatrix();
+  if (this.control.isPointerDown) {
+    cameraTargetZ += this.control.rotationVelocity * 6;
+    damping = 7 / timeScale;
   }
 
+  const isMoving = this.control.isPointerDown || Math.abs(this.smoothRotationVelocity) > 0.01;
+
+  if (isMoving !== this.movementActive) {
+    this.movementActive = isMoving;
+    this.onMovementChange(isMoving);
+  }
+
+  if (!this.control.isPointerDown) {
+    const nearestVertexIndex = this.#findNearestVertexIndex();
+    const itemIndex = nearestVertexIndex % Math.max(1, this.items.length);
+    this.onActiveItemChange(itemIndex);
+    const snapDirection = vec3.normalize(vec3.create(), this.#getVertexWorldPosition(nearestVertexIndex));
+    this.control.snapTargetDirection = snapDirection;
+  }
+
+  this.camera.position[2] += (cameraTargetZ - this.camera.position[2]) / damping;
+  this.#updateCameraMatrix();
+}
   #findNearestVertexIndex() {
     const n = this.control.snapDirection;
     const inversOrientation = quat.conjugate(quat.create(), this.control.orientation);
@@ -931,16 +926,18 @@ export default function InfiniteMenu({ items = [], scale = 1.0 }) {
       setActiveItem(items[itemIndex]);
     };
 
-    if (canvas) {
-      sketch = new InfiniteGridMenu(
-        canvas,
-        items.length ? items : defaultItems,
-        handleActiveItem,
-        setIsMoving,
-        sk => sk.run(),
-        scale
-      );
-    }
+   if (canvas) {
+  sketch = new InfiniteGridMenu(
+    canvas,
+    items.length ? items : defaultItems,
+    handleActiveItem,
+    setIsMoving,
+    sk => {
+      sk.run(); // 🔥 SOLO arranca el loop, SIN llamar a resize
+    },
+    scale
+  );
+}
 
     const handleResize = () => {
       if (sketch) {
@@ -949,7 +946,7 @@ export default function InfiniteMenu({ items = [], scale = 1.0 }) {
     };
 
     window.addEventListener('resize', handleResize);
-    handleResize();
+  
 
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -966,7 +963,8 @@ export default function InfiniteMenu({ items = [], scale = 1.0 }) {
   };
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+    <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: '600px' }}>
+
       <canvas id="infinite-grid-menu-canvas" ref={canvasRef} />
 
       {activeItem && (
