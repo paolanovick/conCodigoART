@@ -61,6 +61,11 @@
   background-color: rgba(255, 255, 255, 0.05);
 }
 
+.pill.is-active {
+  background-color: rgba(241, 241, 241, 0.2);
+  font-weight: 600;
+}
+
 .hover-circle {
   position: absolute;
   left: 50%;
@@ -101,19 +106,20 @@
   cursor: pointer;
   padding: 0.5rem;
   z-index: 60;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .hamburger-line {
   display: block;
-  width: 24px;
-  height: 2px;
+  width: 28px;
+  height: 3px;
   background: var(--base);
-  margin: 4px 0;
+  border-radius: 2px;
   transition: all 0.3s;
 }
 
 .mobile-menu-popover {
-  display: none;
   position: absolute;
   top: 100%;
   left: 0;
@@ -122,6 +128,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 40;
   padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .mobile-menu-list {
@@ -136,21 +143,25 @@
 
 .mobile-menu-link {
   display: block;
-  padding: 0.75rem 1rem;
+  padding: 1rem;
   color: var(--base);
   text-decoration: none;
-  border-radius: 0.5rem;
-  transition: background-color 0.2s;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
   font-weight: 500;
+  font-size: 1.1rem;
 }
 
 .mobile-menu-link:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .mobile-menu-link.is-active {
-  background-color: var(--pill-bg);
-  color: var(--hover-text);
+  background-color: #f1f1f1 !important;
+  color: #000000 !important;
+  font-weight: 700;
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(241, 241, 241, 0.3);
 }
 
 .desktop-only {
@@ -161,29 +172,6 @@
   display: none;
 }
 
-@media (max-width: 768px) {
-  .desktop-only {
-    display: none !important;
-  }
-
-  .mobile-only {
-    display: block;
-  }
-
-  .mobile-menu-button {
-    display: block;
-  }
-  
-  .pill-logo img {
-    height: 2.5rem;
-  }
-  
-  .pill-nav {
-    padding: 1rem 1.5rem;
-  }
-}
-
-/* RESPONSIVE */
 @media (max-width: 768px) {
   .desktop-only {
     display: none !important;
@@ -218,16 +206,4 @@
   .desktop-only {
     display: flex !important;
   }
-}
-
-.mobile-menu-link.is-active {
-  background-color: #f1f1f1; /* Blanco/gris claro */
-  color: #000000; /* Texto negro */
-  font-weight: 600;
-}
-
-/* Agrega esto al final del archivo */
-.pill.is-active {
-  background-color: rgba(241, 241, 241, 0.2);
-  font-weight: 600;
 }

@@ -7,43 +7,65 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['#', '#about', '#seccion1', '#contact'];
-      const scrollPosition = window.scrollY + 200; // Offset para el header
+      // Posición actual del scroll más la mitad de la ventana
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      
+      // Obtener todas las secciones
+      const sections = [
+        { id: '#contact', element: document.querySelector('#contact') },
+        { id: '#seccion1', element: document.querySelector('#seccion1') },
+        { id: '#about', element: document.querySelector('#about') },
+      ];
 
-      // Encuentra qué sección está visible
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section === '#') {
-          if (scrollPosition < 100) {
-            setActiveSection('#');
-            return;
+      // Si estamos muy arriba, es Inicio
+      if (window.scrollY < 200) {
+        setActiveSection('#');
+        return;
+      }
+
+      // Buscar qué sección está en el viewport
+      let found = false;
+      for (const section of sections) {
+        if (section.element) {
+          
+          const sectionTop = section.element.offsetTop;
+          const sectionBottom = sectionTop + section.element.offsetHeight;
+          
+          // Si el scroll está dentro de esta sección
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            setActiveSection(section.id);
+            found = true;
+            break;
           }
-          continue;
         }
-        
-        const element = document.querySelector(section);
-        if (element && element.offsetTop <= scrollPosition) {
-          setActiveSection(section);
-          return;
-        }
+      }
+
+      // Si no encontramos ninguna, es Inicio
+      if (!found && window.scrollY < 500) {
+        setActiveSection('#');
       }
     };
 
     // Detectar clicks en los links
-    const handleHashChange = () => {
-      setActiveSection(window.location.hash || '#');
+    const handleClick = (e) => {
+      const href = e.target.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        setTimeout(() => {
+          handleScroll();
+        }, 600); // Espera a que termine el scroll
+      }
     };
 
+    // Listeners
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('hashchange', handleHashChange);
+    document.addEventListener('click', handleClick);
     
     // Ejecutar al cargar
-    handleScroll();
-    handleHashChange();
+    setTimeout(handleScroll, 100);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('hashchange', handleHashChange);
+      document.removeEventListener('click', handleClick);
     };
   }, []);
 
