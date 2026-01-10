@@ -1,8 +1,7 @@
 import cabeza2 from "../assets/cabeza.jpeg";
 import FlowingMenu from "./FlowingMenu";
 
-// Importa imágenes para cada ítem (o usa placeholder)
-import webImg from "../assets/web-design.jpg"; // Agrega tus imágenes
+ 
 
 export default function Seccion1() {
   const menuItems = [
