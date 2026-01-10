@@ -1,35 +1,26 @@
 import React from "react";
-import logoBCOsf from "../assets/logoBCOsf.png"; // Ajusta la ruta si es necesario
+import PillNav from "./PillNav"; // Ajusta la ruta según tu estructura
+import logoBCOsf from "../assets/logoBCOsf.png";
 
 export default function Header() {
   return (
-    <header className="bg-black shadow p-4 flex justify-between items-center">
-      {/* Logo */}
-      <div className="flex items-center space-x-2">
-        <img src={logoBCOsf} alt="ConCodigoArt" className="w-32  h-auto" />
-      </div>
-
-      {/* Navegación */}
-      <nav className="space-x-6">
-        <a
-          href="#nosotros"
-          className="text-white hover:text-indigo-400 font-medium transition-colors"
-        >
-          Nosotros
-        </a>
-        <a
-          href="#productos"
-          className="text-white hover:text-indigo-400 font-medium transition-colors"
-        >
-          Productos
-        </a>
-        <a
-          href="#contacto"
-          className="text-white hover:text-indigo-400 font-medium transition-colors"
-        >
-          Contacto
-        </a>
-      </nav>
-    </header>
+    <PillNav
+      logo={logoBCOsf}
+      logoAlt="ConCodigoArt"
+      items={[
+        { label: 'Inicio', href: '#' },
+        { label: 'Nosotros', href: '#nosotros' },
+        { label: 'Productos', href: '#productos' },
+        { label: 'Contacto', href: '#contacto' }
+      ]}
+      activeHref={window.location.hash || '#'}
+      className="shadow"
+      ease="power3.easeOut"
+      baseColor="#ffffff"          // Texto blanco base
+      pillColor="#6366f1"           // Indigo para el pill (hover)
+      hoveredPillTextColor="#ffffff" // Texto blanco cuando hay hover
+      pillTextColor="#ffffff"        // Texto blanco en estado normal
+      initialLoadAnimation={true}
+    />
   );
 }
