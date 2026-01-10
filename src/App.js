@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="font-sans">
       <Header />
+        <div className="pt-16 md:pt-32"> 
       <Hero />
       <Seccion1 />
       <About />
@@ -21,7 +22,8 @@ function App() {
       <TestimonialsCarousel />
 
       <Contact />
-      <Footer />
+        <Footer />
+        </div>
     </div>
   );
 }

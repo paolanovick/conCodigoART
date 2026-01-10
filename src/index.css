@@ -15,3 +15,12 @@
   animation: scroll-up 20s linear infinite;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ajuste para compensar la altura del header fijo */
+section {
+  /* stylelint-disable-next-line */
+  scroll-margin-top: 140px;
+}

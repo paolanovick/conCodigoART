@@ -3,7 +3,7 @@ import aboutImg from "../assets/logoBCO.png"; // reemplaza con tu imagen
 
 export default function About() {
   return (
-    <section className="w-full flex flex-col md:flex-row">
+    <section id="about"className="w-full flex flex-col md:flex-row">
       {/* Lado izquierdo - texto sobre fondo negro */}
       <div className="md:w-3/5 w-full bg-black text-white py-8 md:py-12 px-6 md:px-16 flex flex-col justify-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-6">Sobre Nosotros</h2>

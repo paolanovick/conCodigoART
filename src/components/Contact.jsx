@@ -38,7 +38,7 @@ export default function Contacto() {
   };
 
   return (
-    <section className="py-20 bg-gray-950">
+    <section id="contact" className="py-20 bg-gray-950">
       <div className="flex flex-col gap-20 max-w-6xl mx-auto px-6">
         <div className="relative flex flex-col lg:flex-row items-stretch text-white rounded-3xl overflow-hidden bg-gradient-to-br from-rose-900 to-red-950 shadow-lg">
          

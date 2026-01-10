@@ -8,17 +8,17 @@ export default function Header() {
       logo={logoBCOsf}
       logoAlt="ConCodigoArt"
       items={[
-        { label: 'Inicio', href: '#' },
-        { label: 'Nosotros', href: '#nosotros' },
-        { label: 'Productos', href: '#productos' },
-        { label: 'Contacto', href: '#contacto' }
+       { label: 'Inicio', href: '#' },
+        { label: 'Nosotros', href: '#about' },
+        { label: 'Productos', href: '#seccion1' },
+        { label: 'Contacto', href: '#contact' }
       ]}
       activeHref={window.location.hash || '#'}
       className="shadow"
       ease="power3.easeOut"
       baseColor="#ffffff"          // Texto blanco base
-      pillColor="#6366f1"           // Indigo para el pill (hover)
-      hoveredPillTextColor="#ffffff" // Texto blanco cuando hay hover
+      pillColor="#f1f1f1"           // Indigo para el pill (hover)
+      hoveredPillTextColor="#000000" // Texto blanco cuando hay hover
       pillTextColor="#ffffff"        // Texto blanco en estado normal
       initialLoadAnimation={true}
     />
