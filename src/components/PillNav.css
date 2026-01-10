@@ -182,3 +182,52 @@
     padding: 1rem 1.5rem;
   }
 }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block !important;
+  }
+
+  .mobile-menu-button {
+    display: flex !important;
+  }
+  
+  .pill-logo img {
+    height: 3rem;
+  }
+  
+  .pill-nav {
+    padding: 1rem 1.5rem;
+  }
+
+  .pill-nav-container {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+
+  .desktop-only {
+    display: flex !important;
+  }
+}
+
+.mobile-menu-link.is-active {
+  background-color: #f1f1f1; /* Blanco/gris claro */
+  color: #000000; /* Texto negro */
+  font-weight: 600;
+}
+
+/* Agrega esto al final del archivo */
+.pill.is-active {
+  background-color: rgba(241, 241, 241, 0.2);
+  font-weight: 600;
+}
