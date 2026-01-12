@@ -4,21 +4,23 @@ import marca2 from "../assets/marca2.png";
 import marca3 from "../assets/marca3.png";
 import marca4 from "../assets/marca4.png";
 import marca5 from "../assets/marca5.png";
+import marca6 from "../assets/marca6.png";
+import marca7 from "../assets/marca7.png";
+
 
 export default function MarcasCarousel() {
-  const marcas = [marca1, marca2, marca3, marca4, marca5];
+  const marcas = [marca1, marca2, marca3, marca4, marca5, marca6, marca7];
 
   return (
     <section className="w-full bg-white overflow-hidden py-8 mt-10">
       <div className="relative">
-        {/* Contenedor de marcas animado */}
         <div className="flex animate-marcas gap-12">
-          {marcas.concat(marcas).map((marca, index) => (
+          {[...marcas, ...marcas].map((marca, index) => (
             <img
               key={index}
               src={marca}
               alt={`Marca ${index + 1}`}
-              className="h-20 object-contain"
+              className="h-28 w-auto object-contain flex-shrink-0"
             />
           ))}
         </div>
@@ -27,13 +29,17 @@ export default function MarcasCarousel() {
       <style>
         {`
           @keyframes marcas {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-50%);
+            }
           }
+
           .animate-marcas {
-            display: flex;
             width: max-content;
-            animation: marcas 20s linear infinite;
+            animation: marcas 25s linear infinite;
           }
         `}
       </style>
