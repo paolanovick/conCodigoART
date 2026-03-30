@@ -16,7 +16,7 @@ export default function MarcasCarousel() {
       <div className="relative">
         <div className="flex animate-marcas gap-12">
           {[...marcas, ...marcas].map((marca, index) => (
-            <imgvagabu
+            <img
               key={index}
               src={marca}
               alt={`Marca ${index + 1}`}
