@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Seccion1 from "./components/Seccion1";
 import MarcasCaroussel from "./components/MarcasCaroussel";
 import MockupPortfolio from "./components/MockupPortfolio";
+import ClienteShowcase from "./components/ClienteShowcase";
 import ChatbotWidget from "./components/ChatbotWidget";
 import TestimonialsCarousel from "./components/TestimonialsCarousel";
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Seccion1 />
       <About />
       <MarcasCaroussel />
+      <ClienteShowcase />
       <MockupPortfolio />
       <ChatbotWidget />
       <TestimonialsCarousel />
