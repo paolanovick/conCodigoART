@@ -65,6 +65,15 @@ const proyectos = [
     descripcion: "Tienda online gastronómica con productos destacados, categorías y sistema de compra.",
     fondo: "from-rose-700 to-rose-900",
   },
+  {
+    titulo: "elmenu.ar/tucomida",
+    url: "https://www.elmenu.ar/tucomida",
+    video: `${process.env.PUBLIC_URL}/elmenu.mp4`,
+    formato: "phone",
+    tipo: "Menú Digital",
+    descripcion: "Menú digital interactivo con categorías, productos y experiencia optimizada para mobile.",
+    fondo: "from-orange-700 to-orange-900",
+  },
 ];
 
 function VideoMockup({ video, formato = "phone" }) {
