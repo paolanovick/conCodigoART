@@ -19,9 +19,10 @@ export default function ChatbotWidget() {
     <div className="fixed bottom-6 right-6 z-50">
       <button
         onClick={() => setOpen(!open)}
+        aria-label={open ? "Cerrar chat" : "Abrir chat"}
         className="bg-gradient-to-r from-fuchsia-600 to-indigo-600 text-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform"
       >
-        <MessageCircle size={24} />
+        <MessageCircle size={24} aria-hidden="true" />
       </button>
 
       {open && (

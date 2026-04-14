@@ -30,7 +30,9 @@ function LazyVideo({ src, className, style }) {
       playsInline
       className={className}
       style={style}
-    />
+    >
+      <track kind="captions" />
+    </video>
   );
 }
 
