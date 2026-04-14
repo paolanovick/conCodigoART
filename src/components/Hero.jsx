@@ -56,13 +56,17 @@ export default function Hero() {
           <img
             src={tarjeta41}
             alt="Tarjeta 4"
+            width={208} height={260}
             className="w-52 h-auto rotate-12"
+            loading="lazy"
           />
-          <img src={tarjeta111} alt="Tarjeta 1" className="w-60 h-auto z-30" />
+          <img src={tarjeta111} alt="Tarjeta 1" width={240} height={300} className="w-60 h-auto z-30" loading="lazy" />
           <img
             src={tarjeta22}
             alt="Tarjeta 2"
+            width={208} height={260}
             className="w-52 h-auto -rotate-12"
+            loading="lazy"
           />
         </div>
 
@@ -71,17 +75,23 @@ export default function Hero() {
           <img
             src={tarjeta41}
             alt="Tarjeta 4"
+            width={320} height={400}
             className="w-11/12 max-w-xs h-auto transform rotate-6"
+            fetchPriority="high"
           />
           <img
             src={tarjeta111}
             alt="Tarjeta 1"
+            width={320} height={400}
             className="w-11/12 max-w-xs h-auto"
+            loading="lazy"
           />
           <img
             src={tarjeta22}
             alt="Tarjeta 2"
+            width={320} height={400}
             className="w-11/12 max-w-xs h-auto transform -rotate-6"
+            loading="lazy"
           />
         </div>
       </div>

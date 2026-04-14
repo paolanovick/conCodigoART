@@ -26,7 +26,9 @@ export default function About() {
         <img
           src={aboutImg}
           alt="Sobre Nosotros"
+          width={400} height={400}
           className="w-full h-auto object-cover rounded-lg shadow-lg max-w-[90%]"
+          loading="lazy"
         />
       </div>
     </section>
