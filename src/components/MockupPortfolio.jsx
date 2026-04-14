@@ -1,5 +1,38 @@
 import { motion } from "framer-motion";
 import { FaWhatsapp, FaExternalLinkAlt } from "react-icons/fa";
+import { useRef, useEffect, useState } from "react";
+
+function LazyVideo({ src, className, style }) {
+  const videoRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !loaded) {
+          setLoaded(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    if (videoRef.current) observer.observe(videoRef.current);
+    return () => observer.disconnect();
+  }, [loaded]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={loaded ? src : undefined}
+      autoPlay
+      muted
+      loop
+      playsInline
+      className={className}
+      style={style}
+    />
+  );
+}
 
 const proyectos = [
   {
@@ -80,7 +113,7 @@ function VideoMockup({ video, formato = "phone" }) {
   const isDesktop = formato === "desktop";
 
   const screen = video ? (
-    <video src={video} autoPlay muted loop playsInline className="w-full h-full object-cover" />
+    <LazyVideo src={video} className="w-full h-full object-cover" />
   ) : (
     <div className="w-full h-full flex items-center justify-center bg-gray-800">
       <span className="text-gray-500 text-xs text-center px-4">Próximamente</span>
