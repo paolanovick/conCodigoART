@@ -12,18 +12,17 @@ function App() {
   return (
     <div className="font-sans">
       <Header />
-        <main className="pt-16 md:pt-32">
-          <Hero />
-          <Seccion1 />
-          <About />
-          <MarcasCaroussel />
-          <MockupPortfolio />
-          <ChatbotWidget />
-          <TestimonialsCarousel />
-          <Contact />
-        </main>
-        <Footer />
-        </div>
+      <main className="pt-16 md:pt-32">
+        <Hero />
+        <Seccion1 />
+        <About />
+        <MarcasCaroussel />
+        <MockupPortfolio />
+        <ChatbotWidget />
+        <TestimonialsCarousel />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 }
