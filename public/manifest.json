@@ -3,9 +3,9 @@
   "name": "Con Codigo ART",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "favicon-tab.png",
       "type": "image/png",
-      "sizes": "667x667",
+      "sizes": "512x512",
       "purpose": "any maskable"
     }
   ],
