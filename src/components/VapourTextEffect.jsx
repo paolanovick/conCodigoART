@@ -91,14 +91,15 @@ export default function VapourTextEffect({
   const fontConfig = useMemo(() => {
     const fontSize = parseFontSize(font.fontSize, 56);
     const vaporizeSpread = calculateVaporizeSpread(fontSize);
+    const motionScale = globalDpr / 1.25;
 
     return {
       fontSize,
       fontFamily: font.fontFamily || "Inter, system-ui, sans-serif",
       fontWeight: font.fontWeight ?? 700,
-      multipliedVaporizeSpread: vaporizeSpread * spread,
+      multipliedVaporizeSpread: vaporizeSpread * spread * motionScale,
     };
-  }, [font.fontFamily, font.fontSize, font.fontWeight, spread]);
+  }, [font.fontFamily, font.fontSize, font.fontWeight, globalDpr, spread]);
 
   const memoizedUpdateParticles = useCallback(
     (particles, vaporizeX, deltaTime) =>
