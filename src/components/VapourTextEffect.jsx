@@ -92,12 +92,14 @@ export default function VapourTextEffect({
     const fontSize = parseFontSize(font.fontSize, 56);
     const vaporizeSpread = calculateVaporizeSpread(fontSize);
     const motionScale = globalDpr / 1.25;
+    const isMobileViewport = typeof window !== "undefined" && window.innerWidth < 640;
+    const mobileMotionBoost = isMobileViewport ? 1.2 : 1;
 
     return {
       fontSize,
       fontFamily: font.fontFamily || "Inter, system-ui, sans-serif",
       fontWeight: font.fontWeight ?? 700,
-      multipliedVaporizeSpread: vaporizeSpread * spread * motionScale,
+      multipliedVaporizeSpread: vaporizeSpread * spread * motionScale * mobileMotionBoost,
     };
   }, [font.fontFamily, font.fontSize, font.fontWeight, globalDpr, spread]);
 
