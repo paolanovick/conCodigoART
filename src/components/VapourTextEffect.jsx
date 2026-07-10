@@ -15,6 +15,10 @@ export const Tag = {
   P: "p",
 };
 
+const REFERENCE_CANVAS_DPR = 1.25;
+const MOBILE_MOTION_BOOST = 1.45;
+const FADE_IN_START_OPACITY = 0.4;
+
 export default function VapourTextEffect({
   texts = ["React", "Web"],
   font = {
@@ -91,9 +95,9 @@ export default function VapourTextEffect({
   const fontConfig = useMemo(() => {
     const fontSize = parseFontSize(font.fontSize, 56);
     const vaporizeSpread = calculateVaporizeSpread(fontSize);
-    const motionScale = globalDpr / 1.25;
+    const motionScale = globalDpr / REFERENCE_CANVAS_DPR;
     const isMobileViewport = typeof window !== "undefined" && window.innerWidth < 640;
-    const mobileMotionBoost = isMobileViewport ? 1.2 : 1;
+    const mobileMotionBoost = isMobileViewport ? MOBILE_MOTION_BOOST : 1;
 
     return {
       fontSize,
@@ -191,17 +195,17 @@ export default function VapourTextEffect({
               ? textBoundaries.left + (textBoundaries.width * progress) / 100
               : textBoundaries.right - (textBoundaries.width * progress) / 100;
 
-          const allVaporized = memoizedUpdateParticles(
+          memoizedUpdateParticles(
             particlesRef.current,
             vaporizeX,
             deltaTime
           );
           memoizedRenderParticles(ctx, particlesRef.current);
 
-          if (vaporizeProgressRef.current >= 100 && allVaporized) {
+          if (vaporizeProgressRef.current >= 100) {
             setCurrentTextIndex((prevIndex) => (prevIndex + 1) % textList.length);
             setAnimationState("fadingIn");
-            fadeOpacityRef.current = 0;
+            fadeOpacityRef.current = FADE_IN_START_OPACITY;
           }
           break;
         }
