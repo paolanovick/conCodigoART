@@ -180,7 +180,12 @@ function VideoMockup({ video, formato = "phone", videoFit = "cover", screenBg = 
           </div>
           <div
             className="overflow-hidden rounded-sm"
-            style={{ height: "270px", background: screenBg, boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.05)" }}
+            style={{
+              aspectRatio: "16 / 9",
+              width: "100%",
+              background: screenBg,
+              boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.05)",
+            }}
           >
             {screen}
           </div>
