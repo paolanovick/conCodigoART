@@ -6,10 +6,11 @@ import marca4 from "../assets/marca4.png";
 import marca5 from "../assets/marca5.png";
 import marca6 from "../assets/marca6.png";
 import marca7 from "../assets/marca7.png";
+import marca8 from "../assets/marca8.png";
 
 
 export default function MarcasCarousel() {
-  const marcas = [marca1, marca2, marca3, marca4, marca5, marca6, marca7];
+  const marcas = [marca1, marca2, marca3, marca4, marca5, marca6, marca7, marca8];
 
   return (
     <section className="w-full bg-white overflow-hidden py-8 mt-10">

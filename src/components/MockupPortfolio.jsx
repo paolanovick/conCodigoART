@@ -38,15 +38,6 @@ function LazyVideo({ src, className, style }) {
 
 const proyectos = [
   {
-    titulo: "tutenis.fun",
-    url: "https://www.tutenis.fun/",
-    video: `${process.env.PUBLIC_URL}/tutenis.mp4`,
-    formato: "phone",
-    tipo: "Turnos de tenis",
-    descripcion: "Reservá tu horario, recuperá clases y mirá tus cupos sin vueltas.",
-    fondo: "from-lime-700 to-emerald-900",
-  },
-  {
     titulo: "vagabundo.com.ar",
     url: "https://vagabundo.com.ar/",
     video: `${process.env.PUBLIC_URL}/vagabundo.mp4`,
@@ -118,13 +109,28 @@ const proyectos = [
     descripcion: "Menú digital interactivo con categorías, productos y experiencia optimizada para mobile.",
     fondo: "from-orange-700 to-orange-900",
   },
+  {
+    titulo: "tutenis.fun",
+    url: "https://www.tutenis.fun/",
+    video: `${process.env.PUBLIC_URL}/tutenis.mp4`,
+    formato: "phone",
+    tipo: "Turnos de tenis",
+    descripcion: "Reservá tu horario, recuperá clases y mirá tus cupos sin vueltas.",
+    fondo: "from-lime-700 to-emerald-900",
+    videoFit: "contain",
+    screenBg: "#f8fafc",
+  },
 ];
 
-function VideoMockup({ video, formato = "phone" }) {
+function VideoMockup({ video, formato = "phone", videoFit = "cover", screenBg = "#000" }) {
   const isDesktop = formato === "desktop";
 
   const screen = video ? (
-    <LazyVideo src={video} className="w-full h-full object-cover" />
+    <LazyVideo
+      src={video}
+      className="w-full h-full"
+      style={{ objectFit: videoFit, background: screenBg }}
+    />
   ) : (
     <div className="w-full h-full flex items-center justify-center bg-gray-800">
       <span className="text-gray-500 text-xs text-center px-4">Próximamente</span>
@@ -147,7 +153,7 @@ function VideoMockup({ video, formato = "phone" }) {
           </div>
           <div
             className="overflow-hidden rounded-sm"
-            style={{ height: "270px", background: "#000", boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.05)" }}
+            style={{ height: "270px", background: screenBg, boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.05)" }}
           >
             {screen}
           </div>
@@ -169,7 +175,7 @@ function VideoMockup({ video, formato = "phone" }) {
         style={{ border: "4px solid #1f2937", outline: "1px solid #374151", background: "#000" }}
       >
         <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10" style={{ width: "50px", height: "12px", background: "#1f2937", borderRadius: "0 0 10px 10px" }} />
-        <div style={{ height: "420px" }}>{screen}</div>
+        <div style={{ height: "420px", background: screenBg }}>{screen}</div>
         <div className="flex justify-center items-center py-2 bg-black">
           <div className="w-20 h-1 rounded-full bg-gray-600" />
         </div>
@@ -205,7 +211,12 @@ export default function MockupPortfolio() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <VideoMockup video={p.video} formato={p.formato} />
+            <VideoMockup
+              video={p.video}
+              formato={p.formato}
+              videoFit={p.videoFit}
+              screenBg={p.screenBg}
+            />
 
             <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left gap-3">
               {/* Etiqueta de tipo */}
