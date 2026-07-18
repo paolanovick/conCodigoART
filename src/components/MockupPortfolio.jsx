@@ -121,6 +121,21 @@ const proyectos = [
     fondo: "from-orange-700 to-orange-900",
   },
   {
+    titulo: "maxigames By hubtravel",
+    url: "https://www.hubtravel.fun/",
+    video: `${process.env.PUBLIC_URL}/fun.mp4`,
+    formato: "tablet",
+    tipo: "Experiencia interactiva",
+    descripcion: (
+      <>
+        Tu próxima <span className="font-semibold italic text-white">aventura</span> te espera.
+      </>
+    ),
+    fondo: "from-yellow-600 to-rose-900",
+    videoFit: "contain",
+    screenBg: "#060b18",
+  },
+  {
     titulo: "tutenis.fun",
     url: "https://www.tutenis.fun/",
     video: `${process.env.PUBLIC_URL}/tutenis.mp4`,
@@ -135,6 +150,7 @@ const proyectos = [
 
 function VideoMockup({ video, formato = "phone", videoFit = "cover", screenBg = "#000" }) {
   const isDesktop = formato === "desktop";
+  const isTablet = formato === "tablet";
 
   const screen = video ? (
     <LazyVideo
@@ -175,6 +191,35 @@ function VideoMockup({ video, formato = "phone", videoFit = "cover", screenBg = 
         </div>
         <div style={{ height: "4px", background: "linear-gradient(to bottom, #555, transparent)", borderRadius: "0 0 50% 50%", margin: "0 20px" }} />
         <div style={{ height: "8px", background: "radial-gradient(ellipse at center, rgba(0,0,0,0.4), transparent)", margin: "0 10px" }} />
+      </div>
+    );
+  }
+
+  if (isTablet) {
+    return (
+      <div className="flex-shrink-0 w-full md:w-[390px]" style={{ maxWidth: "100%" }}>
+        <div
+          className="relative mx-auto rounded-[28px] overflow-hidden shadow-2xl"
+          style={{
+            maxWidth: "390px",
+            padding: "12px",
+            background: "linear-gradient(145deg, #252525, #111)",
+            border: "1px solid #374151",
+            boxShadow: "0 14px 28px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.08)",
+          }}
+        >
+          <div className="absolute left-1/2 top-1 -translate-x-1/2 w-10 h-1 rounded-full bg-gray-700" />
+          <div
+            className="overflow-hidden rounded-[18px]"
+            style={{
+              height: "285px",
+              background: screenBg,
+              boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.06)",
+            }}
+          >
+            {screen}
+          </div>
+        </div>
       </div>
     );
   }
