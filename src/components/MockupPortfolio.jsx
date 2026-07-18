@@ -38,6 +38,15 @@ function LazyVideo({ src, className, style }) {
 
 const proyectos = [
   {
+    titulo: "tutenis.fun",
+    url: "https://www.tutenis.fun/",
+    video: `${process.env.PUBLIC_URL}/tutenis.mp4`,
+    formato: "phone",
+    tipo: "Turnos de tenis",
+    descripcion: "Reservá tu horario, recuperá clases y mirá tus cupos sin vueltas.",
+    fondo: "from-lime-700 to-emerald-900",
+  },
+  {
     titulo: "vagabundo.com.ar",
     url: "https://vagabundo.com.ar/",
     video: `${process.env.PUBLIC_URL}/vagabundo.mp4`,
