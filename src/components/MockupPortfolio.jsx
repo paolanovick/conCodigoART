@@ -132,7 +132,7 @@ const proyectos = [
       </>
     ),
     fondo: "from-yellow-600 to-rose-900",
-    videoFit: "contain",
+    videoFit: "cover",
     screenBg: "#060b18",
   },
   {
@@ -212,7 +212,8 @@ function VideoMockup({ video, formato = "phone", videoFit = "cover", screenBg = 
           <div
             className="overflow-hidden rounded-[18px]"
             style={{
-              height: "285px",
+              aspectRatio: "4 / 3",
+              width: "100%",
               background: screenBg,
               boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.06)",
             }}
