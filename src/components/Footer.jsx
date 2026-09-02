@@ -6,7 +6,7 @@ import {
   FaInstagram,
   FaLinkedin,
 } from "react-icons/fa";
-import logoBCOsf from "../assets/logoBCOsf.png"; 
+import logoBCOsf from "../assets/logoBCOsf.png";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -168,7 +168,7 @@ export default function Footer() {
           <button
             aria-label="Instagram"
             onClick={() =>
-              window.open("https://www.instagram.com/kuke.bags/", "_blank")
+              window.open("https://www.instagram.com/concodigoart/", "_blank")
             }
             className="hover:text-gray-400 transition"
           >
