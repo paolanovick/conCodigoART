@@ -8,6 +8,7 @@ import MarcasCaroussel from "./components/MarcasCaroussel";
 import MockupPortfolio from "./components/MockupPortfolio";
 import ChatbotWidget from "./components/ChatbotWidget";
 import TestimonialsCarousel from "./components/TestimonialsCarousel";
+import CookieBanner from "./components/CookieBanner";
 function App() {
   return (
     <div className="font-sans">
@@ -23,6 +24,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <CookieBanner />
     </div>
   );
 }
